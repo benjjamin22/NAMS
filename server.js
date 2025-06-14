@@ -117,7 +117,7 @@ var NoteSchemer = new Schema({
     Bloodgroup: { type: String, uppercase: true },
     PhoneNo: { type: String, uppercase: true },
     EmergencyNo: { type: String, uppercase: true },
-    RegNo: { type: String, uppercase: true },
+    RegNo: { type: String, uppercase: true, unique: true },
     Validity: { type: String, uppercase: true },
     picturepath: { type: String },
     time: { type: String, uppercase: true }
