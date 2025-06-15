@@ -148,7 +148,7 @@ async function uploadImageToGoogleDrive(file) {
     const response = await drive.files.create({
         resource: fileMetadata,
         media: media,
-        fields: 'id,webViewLink'
+        fields: 'id,webViewLink,name'
     });
 
     return response.data
