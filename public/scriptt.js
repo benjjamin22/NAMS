@@ -55,7 +55,7 @@ async function getmovieee() {
 }
 
 
-function movieselected(id) {
+function movieselected(_id) {
   sessionStorage.setItem('movieId', _id);
   window.location = 'samplepreview.html';
   return false;
