@@ -180,7 +180,7 @@ app.post("/", upload.single('image'), async(req, res) => {
         const Pathoo = await uploadImageToGoogleDrive(req.file);
        const imagePath = 'https://benjjamin22.github.io/filter/utilitie/nuasa/nuasa1/' + Pathoo.name;
         const urli =  Pathoo.webViewLink;
-        const urlii =  'https://lh3.googleusercontent.com/d/' + Pathoo.id + '=s90?authuser=0';
+        const urlii =  'https://lh3.googleusercontent.com/d/' + Pathoo.id + '=s400?authuser=0';
 
         function pad(n) {
             return n < 10 ? '0' + n : n;
