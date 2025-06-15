@@ -1,7 +1,7 @@
 const search = document.getElementById('search');
 const main = document.getElementById('main');
 const form = document.getElementById('form');
-//nuasa = '/detail'
+url = 'https://namsimsu.mydatabase.com.ng/detail'
 
 const listItems = []
 
@@ -10,7 +10,7 @@ getData()
 search.addEventListener('input', (e) => filterData(e.target.value));
 
 async function getData() {
-    const res = await fetch('https://namsimsu.mydatabase.com.ng/detail')
+    const res = await fetch('url')
     const nuasa = await res.json()
 
     // Clear result
@@ -43,8 +43,8 @@ function filterData(searchTerm) {
 getmovieee();
 async function getmovieee() {
   let objects = document.getElementById("objects");
-  //const res = await fetch(url)
-  //const { nuasa } = await res.json()
+  const res = await fetch(url)
+  const  nuasa = await res.json()
   let allObject = nuasa.filter((val) => {
       if (typeof val == 'object') {
           return true;
@@ -56,7 +56,7 @@ async function getmovieee() {
 
 
 function movieselected(id) {
-  sessionStorage.setItem('movieId', id);
+  sessionStorage.setItem('movieId', _id);
   window.location = 'samplepreview.html';
   return false;
 
@@ -68,92 +68,87 @@ async function getmovie() {
   console.log(movieId)
   const res = await fetch(url)
   const data = await res.json()
-  let id = data.filter(ids => ids.id === movieId);
+  let id = data.filter(ids => ids._id === movieId);
   console.log(id)
 
   const html = id.map(user => {
       const li = document.createElement('li')
       li.innerHTML = `
-          <div class="user-profile">
-              <div style="justify-content:center; padding:5% 0% ;width:100%;justify-self:center;background-color:green;heigh:auto;" class="profile-top">
-              <div style="justify-content:center;padding:5% 18%; width:100%;justify-self:center;background-color:green;heigh:auto;">
-                  <img src="${user.client}">
+      <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+          <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+          <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+      <div class="profile-info">
+          <h1 style="color:white;text-align:center;margin-bottom:7px;margin-top: 7px; line-height:2rem;font-size: 3rem;font-weight: bolder;">${user.fullname}</h1> 
+      </div>
+  </div>
+</div>
+  <h1 style="font-size:17px;margin-top:10px;text-align:center;padding:0 0rem;">REG NUMBER</h1>
+  <div class="profile-bottom" style="margin-bottom:-25px";>
+      <div style="flex-direction:column;margin:-11px 0px;" class="profile-info">      
+          <h1 style="Font-size:22px;text-align: center;font-weight: bolder;">- ${user.RegNo}-</h1>                               
+          </div>
+           <h1 style="font-size:15px;margin-top:20px;text-align:center;padding:0 0rem;">Validity</h1>
+           <div style="flex-direction:column;"class="profile-info"> 
+                  <h1 style="margin-top:-1.5px;font-size:19px;font-weight: bolder;">-${user.RegNo}-</h1>
+                
+              </div> 
+      </div>
+      <div class="profile-bottom">
+          <div style="display:flex;justify-self: center;width: 100%;">
+              <div style="width:31%;margin:0 1px;">
+                  <h1 style="font-size:12px;margin-top:-5px;text-align:center;padding:0 1.5rem;">B/G</h1>
+                  <div class="profile-info">
+                  <h2 style="color:black;padding:0 .8rem;margin-top:-5px;font-weight: bolder;justify-self: center;font-size: 18px;font-weight: bolder;background-color: transparent;border: none;text-align: center;width:6rem;">${user.RegNo}</h2>
                   </div>
-                  <div style="padding: 0px 25px;" class="profile-info">
-                      <h2 style="text-align:center;margin-bottom:0px;line-height:2rem;color:white;">${user.fullname}</h2>  
-                      <h1 style="margin-top:3px;margin-bottom:0px;line-height:1rem;text-align:center;color:yellow;">>>>ID NO: ${user.RegNo}<<<</h1>
-                  </div>
-              
               </div>
-              <div class="profile-bottom">
-              <h1 style="font-size:12px;margin-bottom:0px;text-align:center;padding:0 1rem;margin-top:-10px;">SCHOOL</h1>
-                  <div style="flex-direction:column;margin-bottom:15px;text-align:center;" class="profile-info"> 
-                      <h1>- ${user.School} ${user.sn} -</h1>
+              <div style="width:31%;margin:0 1px;">
+              <h1 style="font-size:12px;margin-top:-5px;text-align:center;padding:0 1rem;">STATUS</h1>
+                  <div style="flex-direction:column;"class="profile-info">
+                  <h1 style="margin:1px 0px;color:red;font-size:15px;font-weight: bolder;">- STUÐENT-</h1>
                   </div>
-              
-              <h1 style="font-size:12px;margin-bottom:15px;text-align:center;padding:0 1rem;">DATE OF BIRTH</h1>
-                  <div style="flex-direction:column;margin:-11px 0px;" class="profile-info"> 
-                      <h1>- ${user.Ddateofbirth.Day} ${user.Ddateofbirth.Month} ${user.Ddateofbirth.Year} -</h1>
-                   </div>
               </div>
-                  <div class="profile-bottom">
-                      <div style="display:flex;">
-                          <div style="width:25%;margin:0 1px;">
-                              <h1 style="font-size:12px;margin-top:-5px;text-align:center;padding:0 1.5rem;">B/G</h1>
-                              <div class="profile-info">
-                              <h1 style="color:black;padding:0 .8rem;">${user.Bloodgroup}</h1>
-                              </div>
-                          </div>
-                          <div style="width:45%;margin:0 1px;">
-                          <h1 style="font-size:12px;margin-top:-5px;text-align:center;padding:0 1rem;">STATUS/VALIDITY</h1>
-                              <div style="flex-direction:column;"class="profile-info">
-                              <h1 style="color:black;padding:0 .8rem;margin-top:-5px;">${user.Status}</h1>
-                              <h1 style="margin:0px;color:red;font-size:12px;margin-bottom:0px;line-height:.5rem;">- ${user.Presentclass} -</h1>
-                              </div>
-                          </div>
-                          <div style="width:25%;margin:0 1px;">
-                              <h1 style="font-size:12px;margin-top:-5px;text-align:center;padding:0 1.5rem;">GENDER</h1>
-                              <div class="profile-info">
-                              <h1 style="color:black;padding:0 .8rem;">${user.Gender}</h1>
-                              </div>
-                          </div>
-                      </div>
-                      
-                      <h1 style="font-size:12px;margin-top:-8px;text-align:center;padding:0 0rem;">LGA/STATE OF ORIGIN</h1>
-                          <div style="flex-direction:column;"class="profile-info"> 
-                              <h1 style="margin-top:-1px;">- ${user.State} -</h1>
-                              <h1 style="margin:-5px;color:red;font-size:12px;">- ${user.HometownCommunity} -</h1>
-                          </div> 
+              <div style="width:31%;margin:0 1px;">
+                  <h1 style="font-size:12px;margin-top:-5px;text-align:center;padding:0 1.5rem;">GENDER</h1>
+                  <div class="profile-info">
+                  <h2 style="color:black;padding:0 .8rem;margin-top:-5px;font-weight: bolder;justify-self: center;font-size: 18px;font-weight: bolder;background-color: transparent;border: none;text-align: center;width:6rem;" placeholder="Gender"type="text"  name="Gender" value ="<%=data.Gender%>"></h2>
+                  </div>
+              </div>
+          </div>
+          
+          <h1 style="font-size:12px;margin-top:-8px;text-align:center;padding:0 0rem;">STATE OF ORIGIN/LGA</h1>
+              <div style="flex-direction:column;"class="profile-info"> 
+                    <input style="margin-top:-1px;font-weight: bold;font-size: 20px;border: none;text-align: center;"placeholder="State" type="text"  name="State" value ="<%=data.State%>">
+                    <input style="margin:-5px;color:red;font-size:15px;margin: 1px 0px;font-weight: bolder;border: none;text-align: center;"placeholder="L.G.A" type="text"  name="LocalGovernment" value ="<%=data.LocalGovernment%>">
+                    
+              </div> 
+              
+              
+              <div style="display:flex;margin:-9px 0px;;justify-content:center;margin-right: 1rem;">
+                  <div>
+                      <h1 style="font-size:12px;margin:0px;text-align:center;">PHONE NO </h1>
+                      <div class="profile-info">
                           
-                         <div style="margin-bottom:1rem;jusify-self:center">
-                               <div style="display:flex;margin:-9px 0px;;justify-content:center;">
-                          <div>
-                              <h1 style="font-size:12px;margin:0px;text-align:center;">PARENT CONTACT 1:</h1>
-                              <div class="profile-info">
-                                  <a style="text-decoration: none;" href="Tel:${user.ParentPhoneNo}">
-                                      <div style="margin-left: 0px;"class="p1">
-                                          <p2 style="margin-left: 0px;">${user.ParentPhoneNo}</p2>
-                                      </div>
-                                  </a>                   
+                              <div style="margin-left: 0px;"class="p1">	
+                                  <input style="margin-left: 0px;font-size: 18px;border: none;text-align: center;padding: 0px 10px;font-weight: bolder;
+                                  background-color: transparent;color: white;width:9rem;" type="text"  name="PhoneNumber" placeholder="Phonenumber"value ="<%=data.PhoneNumber%>">
                               </div>
-                          </div>
-                          <div>
-                              <h1 style="font-size:12px;margin:0px;text-align:center;">PARENT CONTACT 2:</h1>
-                              <div class="profile-info">
-                                  <a style="text-decoration: none;" href="Tel:${user.ParentPhoneNo2}">
-                                      <div style="margin-left: 0px;"class="p2">
-                                          <p2 style="margin-left: 0px;">${user.ParentPhoneNo2}</p2>
-                                      </div>
-                                  </a>                   
-                              </div>                           
-                          </div>
+                                           
                       </div>
-                          </div>
                   </div>
-                     
-                  </div>       
+                  <div>
+                      <h1 style="font-size:12px;margin:0px;text-align:center;">EMERGENCY NO:</h1>
+                      <div class="profile-info">
+                          
+                              <div style="margin-left: 0px;"class="p2">
+                                  <input style="margin-left: 0px;font-size: 18px;border: none;text-align: center;padding: 0px 10px;
+                                  font-weight: bolder;background-color: transparent;color: white;width:9rem;" type="text"  name="EmergencyNo" placeholder="Emergency No.." value ="<%=data.EmergencyNo%>">
+                              </div>
+                                            
+                      </div>                           
+                  </div>
               </div>
-          </div>`
+  </div> `
       facttext.appendChild(li)
 
   });
