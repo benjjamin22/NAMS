@@ -79,7 +79,7 @@ async function getmovie() {
           <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
       </svg>
       <div class="profile-info">
-          <h1 style="color:white;text-align:center;margin-bottom:7px;margin-top: 7px; line-height:2rem;font-size: 3rem;font-weight: bolder;">${user.fullname}</h1> 
+          <h1 style="color:white;text-align:center;margin-bottom:7px;margin-top: 7px; line-height:2rem;font-size: 2rem;font-weight: bolder;">${user.fullname}</h1> 
       </div>
   </div>
 </div>
@@ -90,7 +90,7 @@ async function getmovie() {
           </div>
            <h1 style="font-size:15px;margin-top:20px;text-align:center;padding:0 0rem;">Validity</h1>
            <div style="flex-direction:column;"class="profile-info"> 
-                  <h1 style="margin-top:-1.5px;font-size:19px;font-weight: bolder;">-${user.RegNo}-</h1>
+                  <h1 style="margin-top:-1.5px;font-size:19px;font-weight: bolder;">-2022 - 2029-</h1>
                 
               </div> 
       </div>
@@ -99,7 +99,7 @@ async function getmovie() {
               <div style="width:31%;margin:0 1px;">
                   <h1 style="font-size:12px;margin-top:-5px;text-align:center;padding:0 1.5rem;">B/G</h1>
                   <div class="profile-info">
-                  <h2 style="color:black;padding:0 .8rem;margin-top:-5px;font-weight: bolder;justify-self: center;font-size: 18px;font-weight: bolder;background-color: transparent;border: none;text-align: center;width:6rem;">${user.RegNo}</h2>
+                  <h2 style="color:black;padding:0 .8rem;margin-top:-5px;font-weight: bolder;justify-self: center;font-size: 18px;font-weight: bolder;background-color: transparent;border: none;text-align: center;width:6rem;">O+</h2>
                   </div>
               </div>
               <div style="width:31%;margin:0 1px;">
@@ -111,7 +111,7 @@ async function getmovie() {
               <div style="width:31%;margin:0 1px;">
                   <h1 style="font-size:12px;margin-top:-5px;text-align:center;padding:0 1.5rem;">GENDER</h1>
                   <div class="profile-info">
-                  <h2 style="color:black;padding:0 .8rem;margin-top:-5px;font-weight: bolder;justify-self: center;font-size: 18px;font-weight: bolder;background-color: transparent;border: none;text-align: center;width:6rem;" placeholder="Gender"type="text"  name="Gender" value ="<%=data.Gender%>"></h2>
+                  <h2 style="color:black;padding:0 .8rem;margin-top:-5px;font-weight: bolder;justify-self: center;font-size: 18px;font-weight: bolder;background-color: transparent;border: none;text-align: center;width:6rem;" >MALE</h2>
                   </div>
               </div>
           </div>
