@@ -10,7 +10,7 @@ getData()
 search.addEventListener('input', (e) => filterData(e.target.value));
 
 async function getData() {
-    const res = await fetch('url')
+    const res = await fetch('https://namsimsu.mydatabase.com.ng/detail')
     const nuasa = await res.json()
 
     // Clear result
@@ -43,7 +43,7 @@ function filterData(searchTerm) {
 getmovieee();
 async function getmovieee() {
   let objects = document.getElementById("objects");
-  const res = await fetch(url)
+  const res = await fetch('https://namsimsu.mydatabase.com.ng/detail')
   const  nuasa = await res.json()
   let allObject = nuasa.filter((val) => {
       if (typeof val == 'object') {
@@ -66,7 +66,7 @@ function movieselected(id) {
 async function getmovie() {
   let movieId = sessionStorage.getItem('movieId');
   console.log(movieId)
-  const res = await fetch(url)
+  const res = await fetch('https://namsimsu.mydatabase.com.ng/detail')
   const data = await res.json()
   let id = data.filter(ids => ids._id === movieId);
   console.log(id)
