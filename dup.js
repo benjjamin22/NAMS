@@ -121,7 +121,6 @@ var NoteSchemer = new Schema({
     Validity: { type: String, uppercase: true },
     picturepath: { type: String },
     imgurl: { type: String },
-    imgurlg: { type: String },
     time: { type: String, uppercase: true }
 },
 { id: false},);
@@ -163,16 +162,6 @@ async function uploadImageToGoogleDrive(file) {
     return response.data
 }
 
-async function getimage(folderId) {
-
-    const response = await drive.files.list({
-        q: `'${folderId}' in parent and mimeType contains 'image/' and trashed=false`,
-        fields: 'files(id,name)'
-    });
-
-    return response.data.files;
-}
-
 app.get('/detail', async(req, res) => {
     try {
         const data = await Note.find();
@@ -196,8 +185,6 @@ app.get('/ASSA', async(req, res) => {
 
 app.post("/", upload.single('image'), async(req, res) => {
     try {
-        const fileid = await getimage(folderId);
-        const linkimg = 'https://drive.google.com/uc?export=view&id=' + fileid;
         const Pathoo = await uploadImageToGoogleDrive(req.file);
         const imagePath = 'https://benjjamin22.github.io/filter/utilitie/nuasa/nuasa1/' + Pathoo.name;
         const urli =  Pathoo.webViewLink;
@@ -236,7 +223,6 @@ app.post("/", upload.single('image'), async(req, res) => {
             Validity: req.body.Validity,
             picturepath: imagePath,
             imgurl: urli,
-            imgurlg: linkimg,
             time: formattedDate,
             
         });
