@@ -21,7 +21,7 @@ async function getData() {
         listItems.push(div)
         div.innerHTML = `<a style="text-decoration:none;" onclick="movieselected('${user._id}')"href="#">
         <div class="movie">
-        <img src="${user.imgurli}">
+        <img src="${user.imgurli}"style="height:100px; width:80px;">
         <div class="movie-info">
       <h3>${user.Aname.Name} ${user.Aname.Mname} ${user.Aname.Surname}</h3>
         </div></div> </a>
