@@ -128,7 +128,7 @@ async function getmovie() {
               <div style="width:31%;margin:0 1px;">
                   <h1 style="font-size:12px;margin-top:-5px;text-align:center;padding:0 1.5rem;">B/G</h1>
                   <div class="profile-info">
-                  <h2 style="color:black;padding:0 .8rem;margin-top:-5px;font-weight: bolder;justify-self: center;font-size: 18px;font-weight: bolder;background-color: transparent;border: none;text-align: center;width:6rem;">${user.Blooggroup}</h2>
+                  <h2 style="color:black;padding:0 .8rem;margin-top:-5px;font-weight: bolder;justify-self: center;font-size: 18px;font-weight: bolder;background-color: transparent;border: none;text-align: center;width:6rem;">${user.Bloodgroup}</h2>
                   </div>
               </div>
               <div style="width:31%;margin:0 1px;">
@@ -140,14 +140,14 @@ async function getmovie() {
               <div style="width:31%;margin:0 1px;">
                   <h1 style="font-size:12px;margin-top:-5px;text-align:center;padding:0 1.5rem;">GENDER</h1>
                   <div class="profile-info">
-                  <h2 style="color:black;padding:0 .8rem;margin-top:-5px;font-weight: bolder;justify-self: center;font-size: 18px;font-weight: bolder;background-color: transparent;border: none;text-align: center;width:6rem;" >${user.Sex}h2>
+                  <h2 style="color:black;padding:0 .8rem;margin-top:-5px;font-weight: bolder;justify-self: center;font-size: 18px;font-weight: bolder;background-color: transparent;border: none;text-align: center;width:6rem;" >${user.Sex}</h2>
                   </div>
               </div>
           </div>
           
           <h1 style="font-size:12px;margin-top:-8px;text-align:center;padding:0 0rem;">STATE OF ORIGIN/LGA</h1>
               <div style="flex-direction:column;"class="profile-info"> 
-                    <h1 style="margin-top:-1px;font-weight: bold;font-size: 20px;border: none;text-align: center;">${user.Stat}</h1>
+                    <h1 style="margin-top:-1px;font-weight: bold;font-size: 20px;border: none;text-align: center;">${user.State}</h1>
                     <h1 style="margin:-5px;color:red;font-size:15px;margin: 1px 0px;font-weight: bolder;border: none;text-align: center;">${user.LocalGovt}</h1>
                     
               </div> 
@@ -170,8 +170,8 @@ async function getmovie() {
                       <div class="profile-info">
                           
                               <div style="margin-left: 0px;"class="p2">
-                                  <input style="margin-left: 0px;font-size: 18px;border: none;text-align: center;padding: 0px 10px;
-                                  font-weight: bolder;background-color: transparent;color: white;width:9rem;">${user.EmergencyNo}</h1>
+                               <h1 style="margin-left: 0px;font-size: 18px;border: none;text-align: center;padding: 0px 10px;font-weight: bolder;
+                                  background-color: transparent;color: white;width:9rem;">${user.EmergencyNo}</h1>
                               </div>
                                             
                       </div>                           
