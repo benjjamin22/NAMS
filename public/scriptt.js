@@ -74,6 +74,11 @@ async function getmovie() {
   const html = id.map(user => {
       const li = document.createElement('li')
       li.innerHTML = `
+      <div style="justify-content: center; justify-self: center;margin-bottom: 10px;">
+						<div class="profile-info" style="justify-self: center;border: 1px solid #cec3c3;padding: 15px 20px;background-color: transparent;height: 22rem;;
+						width: 19rem;background: rgba(255, 255, 255, 0.1);box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+						border-radius: 10px;"><img style="margin-top: 0rem;justify-self: center;" src="<%=data.image%>" >
+					</div>
       <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
           <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
           <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
