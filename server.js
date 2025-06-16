@@ -103,6 +103,11 @@ const connectDB = async() => {
 
 var NoteSchemer = new Schema({
     field: { type: String, default: () => uuidv4(), required: true },
+       Aname: {
+        Name: { type: String, uppercase: true },
+        Mname: { type: String, uppercase: true },
+        Surname: { type: String, uppercase: true }
+    },
     fullname: { type: String, uppercase: true },
     State: { type: String, uppercase: true },
     LocalGovt: { type: String, uppercase: true },
@@ -156,7 +161,7 @@ async function uploadImageToGoogleDrive(file) {
 
 app.get('/detail', async(req, res) => {
     try {
-        const data = await Note.find();
+        const data = (await Note.find().sort({'_id':-1})).limit(1);
         res.json(data);
     } catch (err) {
         console.log(err);
@@ -200,6 +205,11 @@ app.post("/", upload.single('image'), async(req, res) => {
 
 
         let newNote = new Note({
+            Aname: {
+                 Name: req.body.Name,
+                 Mname: req.body.Mname,
+                 Surname: req.body.Surname
+             },
             fullname: req.body.fullname,
             State: req.body.State,
             LocalGovt: req.body.LocalGovt,
