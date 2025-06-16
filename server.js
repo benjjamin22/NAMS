@@ -148,7 +148,7 @@ async function uploadImageToGoogleDrive(file) {
     const response = await drive.files.create({
         resource: fileMetadata,
         media: media,
-        fields: 'id,webViewLink'
+        fields: 'id,webViewLink,name'
     });
 
     return response.data
@@ -178,7 +178,7 @@ app.get('/ASSA', async(req, res) => {
 app.post("/", upload.single('image'), async(req, res) => {
     try {
         const Pathoo = await uploadImageToGoogleDrive(req.file);
-       const imagePath = 'https://benjjamin22.github.io/filter/utilitie/nuasa/nuasa1/' + Pathoo.name;
+       const imagePath = Pathoo.name;
         const urli =  Pathoo.webViewLink;
         const urlii =  'https://lh3.googleusercontent.com/d/' + Pathoo.id + '=s400?authuser=0';
 
