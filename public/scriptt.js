@@ -160,7 +160,7 @@ async function getmovie() {
                           
                               <div style="margin-left: 0px;"class="p1">	
                                   <h1 style="margin-left: 0px;font-size: 18px;border: none;text-align: center;padding: 0px 10px;font-weight: bolder;
-                                  background-color: transparent;color: white;width:9rem;">${user.PhoneNo}</h1>
+                                  background-color: transparent;color: white;width:9rem;">$Protected</h1>
                               </div>
                                            
                       </div>
@@ -171,7 +171,7 @@ async function getmovie() {
                           
                               <div style="margin-left: 0px;"class="p2">
                                <h1 style="margin-left: 0px;font-size: 18px;border: none;text-align: center;padding: 0px 10px;font-weight: bolder;
-                                  background-color: transparent;color: white;width:9rem;">${user.EmergencyNo}</h1>
+                                  background-color: transparent;color: white;width:9rem;">Protected</h1>
                               </div>
                                             
                       </div>                           
