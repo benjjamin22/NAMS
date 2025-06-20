@@ -119,7 +119,7 @@ async function getmovie() {
           </div>
            <h1 style="font-size:15px;margin-top:20px;text-align:center;padding:0 0rem;">Validity</h1>
            <div style="flex-direction:column;"class="profile-info"> 
-                  <h1 style="margin-top:-1.5px;font-size:19px;color:black;font-weight: bolder;">-2025 - 2029-</h1>
+                  <h1 style="margin-top:-1.5px;font-size:19px;color:black;font-weight: bolder;">-${user.Validity}-</h1>
                 
               </div> 
       </div>
