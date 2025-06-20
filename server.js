@@ -228,7 +228,7 @@ app.post("/", upload.single('image'), async(req, res) => {
 
 
         await newNote.save();
-        res.redirect(`/sample.html`)
+        res.redirect(`rightrealm/sample.html`)
     } catch (error) {
         res.status(500).send('Error saving data');
     } //finally {
