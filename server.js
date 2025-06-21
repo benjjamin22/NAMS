@@ -225,7 +225,9 @@ app.post("/", upload.single('image'), async(req, res) => {
             time: formattedDate,
             
         });
-const useret = await Note.findOne({RegNo});
+        
+        const data = await Note.find();
+        const useret = data.filter(o => o.RegNo === req.body.RegNo,)
         if(useret){
             res.send('already submited')
         }
