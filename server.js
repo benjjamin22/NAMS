@@ -183,7 +183,7 @@ app.get('/ASSA', async(req, res) => {
 app.post("/", upload.single('image'), async(req, res) => {
     try {
         const Pathoo = await uploadImageToGoogleDrive(req.file);
-       const imagePath = Pathoo.name;
+       const imagePath = 'image/' + Pathoo.name;
         const urli =  Pathoo.webViewLink;
         const urlii =  'https://lh3.googleusercontent.com/d/' + Pathoo.id + '=s400?authuser=0';
 
