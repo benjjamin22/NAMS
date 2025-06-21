@@ -90,9 +90,9 @@ async function getmovie() {
 							margin-bottom: 0%;
 							" src="btnn.jpg" alt="">         
 						</div>
-						<h2 style="font-size: 25px;font-weight: bolder;color: white" >IMO STATE UNIVERSITY</h2>
-                        <h2 style="font-size: 22px;font-weight: bolder;color: white;">National Association of</h2>
-						<p style="font-size: 22px;font-weight: bolder;color: white;">Micrio Biology</p>
+						<h2 style="font-size: 21px;font-weight: bolder;color: white;" >NATIONAL ASSOCOATION OF</h2>
+                        <h2 style="font-size: 23px;font-weight: bolder;color: white;">MICROBIOLOGY STUDENT</h2>
+						<p style="font-size: 21px;font-weight: bolder;color: white;">IMO STATE UNIVERSITY</p>
 					</div>
 
                     
@@ -119,7 +119,7 @@ async function getmovie() {
           </div>
            <h1 style="font-size:15px;margin-top:20px;text-align:center;padding:0 0rem;">Validity</h1>
            <div style="flex-direction:column;"class="profile-info"> 
-                  <h1 style="margin-top:-1.5px;font-size:19px;color:black;font-weight: bolder;">-2025 - 2029-</h1>
+                  <h1 style="margin-top:-1.5px;font-size:19px;color:black;font-weight: bolder;">-${user.Validity}-</h1>
                 
               </div> 
       </div>
