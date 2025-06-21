@@ -90,9 +90,9 @@ async function getmovie() {
 							margin-bottom: 0%;
 							" src="btnn.jpg" alt="">         
 						</div>
-						<h2 style="font-size: 25px;font-weight: bolder;color: white" >IMO STATE UNIVERSITY</h2>
-                        <h2 style="font-size: 22px;font-weight: bolder;color: white;">National Association of</h2>
-						<p style="font-size: 22px;font-weight: bolder;color: white;">Micrio Biology</p>
+						<h2 style="font-size: 21px;font-weight: bolder;color: dark-purple" >NATIONAL ASSOCOATION OF</h2>
+                        <h2 style="font-size: 23px;font-weight: bolder;color: dark-purple;">MICROBIOLOGY STUDENT (NAMA)</h2>
+						<p style="font-size: 21px;font-weight: bolder;color: dark-green;">IMO STATE UNIVERSITY (CHAPTER)</p>
 					</div>
 
                     
