@@ -226,12 +226,6 @@ app.post("/", upload.single('image'), async(req, res) => {
             
         });
         
-        const data = await Note.find();
-        const useret = data.filter(o => o.RegNo === req.body.RegNo,)
-        if(useret){
-            res.send('already submited')
-        }
-        
         await newNote.save();
         res.redirect(`sample.html`)
     } catch (error) {
