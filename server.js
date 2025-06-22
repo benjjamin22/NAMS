@@ -228,7 +228,7 @@ app.post("/", upload.single('image'), async(req, res) => {
         const {RegNo} = req.body;
         const exist = await Note.findOne({ RegNo });
           if (exist) {
-         res.send('<h1 style="font-size:3rem;margin-top:5rem;text-align:center;justify-self:center;">Already exist<h1>');
+         res.send('<h1 style="font-size:6rem;margin-top:15rem;text-align:center;justify-self:center;">Already exist<h1>');
           }
         await newNote.save();
         res.redirect(`sample.html`)
