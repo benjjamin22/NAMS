@@ -225,7 +225,11 @@ app.post("/", upload.single('image'), async(req, res) => {
             time: formattedDate,
             
         });
-        
+        const {RegNo} = req.body;
+        const exist = await Note.findOne({ RegNo });
+          if (exist) {
+    return res.status(400).send('User already exists.');
+          }
         await newNote.save();
         res.redirect(`sample.html`)
     } catch (error) {
