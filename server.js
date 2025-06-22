@@ -183,7 +183,7 @@ app.post('/detailu', async(req, res) => {
 app.post('/:id', async (req, res) => {
   const {id} = req.params;
   try{
-    const founduser = await Note.findOne(id);
+    const founduser = await Note.findOne(_id);
     if (!founduser){
       return res.status(404).send('no user found')
     }
