@@ -98,7 +98,30 @@ const connectDB = async() => {
     }
 }
 
+//UPDATE ROUT
+app.post('/ben/:id', async (req, res) => {
+  const {id} = req.params;
+  try{
+    const founduser = await Note.findOne(id);
+    if (!founduser){
+      return res.status(404).send('no user found')
+    }
+      
+    let newNote = new Note({
+      Gender: req.body.Gender,
+      Bloodgroup: req.body.Bloodgroup,
+      PhoneNumber: req.body.PhoneNumber,
+      EmergencyNo: req.body.EmergencyNo,
+      State: req.body.State,
+      LocalGovernment: req.body.LocalGovernment,          
+  });
+  await newNote.save();
+  res.redirect('/id/' + founduser.id)
 
+  } catch (err){
+  res.status(500).send('error ocĉured');
+  }
+  });
 
 var NoteSchemer = new Schema({
     field: { type: String, default: () => uuidv4(), required: true },

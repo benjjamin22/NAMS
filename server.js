@@ -169,6 +169,42 @@ app.get('/detail', async(req, res) => {
     }
 });
 
+app.post('/detailu', async(req, res) => {
+    try {
+        const data = await Note.find() .sort({_id:-1});
+        res.json(data);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+//UPDATE ROUT
+app.post('/:id', async (req, res) => {
+  const {id} = req.params;
+  try{
+    const founduser = await Note.findOne(id);
+    if (!founduser){
+      return res.status(404).send('no user found')
+    }
+      
+    let newNote = new Note({
+      Gender: req.body.Gender,
+      Bloodgroup: req.body.Bloodgroup,
+      PhoneNumber: req.body.PhoneNumber,
+      EmergencyNo: req.body.EmergencyNo,
+      State: req.body.State,
+      LocalGovernment: req.body.LocalGovernment,          
+  });
+  await newNote.save();
+  res.redirect('/id/' + founduser.id)
+
+  } catch (err){
+  res.status(500).send('error ocĉured');
+  }
+  });
+
+
 app.get('/ASSA', async(req, res) => {
     try {
         const data = await Note.find();
