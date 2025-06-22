@@ -180,7 +180,7 @@ app.post('/detailu', async(req, res) => {
 });
 
 //UPDATE ROUT
-app.post('/:id', async (req, res) => {
+app.patch('/:id', async (req, res) => {
   const {id} = req.params;
   try{
     const founduser = await Note.findOne(_id);
@@ -197,7 +197,7 @@ app.post('/:id', async (req, res) => {
       LocalGovernment: req.body.LocalGovernment,          
   });
   await newNote.save();
-  res.redirect('/id/' + founduser.id)
+  
 
   } catch (err){
   res.status(500).send('error ocĉured');
