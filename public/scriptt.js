@@ -92,7 +92,7 @@ async function getmovie() {
 						</div>
 						<h2 style="font-size: 21px;font-weight: bolder;color: white;" >NATIONAL ASSOCOATION OF</h2>
                         <h2 style="font-size: 23px;font-weight: bolder;color: white;">MICROBIOLOGY STUDENT</h2>
-						<p style="font-size: 21px;font-weight: bolder;color: white;">IMO STATE UNIVERSITY</p>
+						<p style="font-size: 21px;font-weight: bolder;color: black;">IMO STATE UNIVERSITY</p>
 					</div>
 
                     
