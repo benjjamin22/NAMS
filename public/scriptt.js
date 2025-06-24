@@ -92,7 +92,7 @@ async function getmovie() {
 						</div>
 						<h2 style="font-size: 21px;font-weight: bolder;color: white;" >NATIONAL ASSOCOATION OF</h2>
                         <h2 style="font-size: 23px;font-weight: bolder;color: white;">MICROBIOLOGY STUDENT</h2>
-						<p style="font-size: 21px;font-weight: bolder;color: white;">IMO STATE UNIVERSITY</p>
+						<p style="font-size: 21px;font-weight: bolder;color: black;">IMO STATE UNIVERSITY</p>
 					</div>
 
                     
@@ -147,9 +147,8 @@ async function getmovie() {
           
           <h1 style="font-size:12px;margin-top:-8px;text-align:center;padding:0 0rem;">STATE OF ORIGIN/LGA</h1>
               <div style="flex-direction:column;"class="profile-info"> 
-                    <h1 style="margin-top:-1px;font-weight: bold;font-size: 20px;border: none;text-align: center;">${user.State}</h1>
-                    <h1 style="margin:-5px;color:red;font-size:15px;margin: 1px 0px;font-weight: bolder;border: none;text-align: center;">${user.LocalGovt}</h1>
-                    
+	            <h1 style="margin:-5px;color:red;font-size:15px;margin: 1px 0px;font-weight: bolder;border: none;text-align: center;">${user.LocalGovt}</h1>
+                    <h1 style="margin-top:-1px;font-weight: bold;font-size: 20px;border: none;text-align: center;">${user.State}</h1> 
               </div> 
               
               
