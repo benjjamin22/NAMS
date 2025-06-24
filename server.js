@@ -87,6 +87,7 @@ const upload = multer({ storage: storage });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.set('view engine', 'ejs');
 
 mongoose.set('strictQuery', false);
 const connectDB = async() => {
@@ -169,41 +170,6 @@ app.get('/detail', async(req, res) => {
     }
 });
 
-app.post('/detailu', async(req, res) => {
-    try {
-        const data = await Note.find() .sort({_id:-1});
-        res.json(data);
-    } catch (err) {
-        console.log(err);
-        res.status(500).send("Internal Server Error");
-    }
-});
-
-//UPDATE ROUT
-app.patch('/:id', async (req, res) => {
-  const {id} = req.params;
-  try{
-    const founduser = await Note.findOne(_id);
-    if (!founduser){
-      return res.status(404).send('no user found')
-    }
-      
-    let newNote = new Note({
-      Gender: req.body.Gender,
-      Bloodgroup: req.body.Bloodgroup,
-      PhoneNumber: req.body.PhoneNumber,
-      EmergencyNo: req.body.EmergencyNo,
-      State: req.body.State,
-      LocalGovernment: req.body.LocalGovernment,          
-  });
-  await newNote.save();
-  
-
-  } catch (err){
-  res.status(500).send('error ocĉured');
-  }
-  });
-
 
 app.get('/ASSA', async(req, res) => {
     try {
@@ -215,6 +181,45 @@ app.get('/ASSA', async(req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+
+//EDIT
+app.get('/:id', async(req, res) => {
+const {id} = req.params;
+try{
+  const founduser = await Evette.findById(id);
+  if (!founduser){
+    return res.status(404).send('no user found')
+  }
+    res.render('result', {data:founduser})
+} catch (err){
+res.status(500).send('error ocĉured');
+}
+});
+
+//UPDATE ROUT
+app.post('/edit/:id', async (req, res) => {
+  const {id} = req.params;
+  try{
+    const founduser = await Evette.findById(id);
+    if (!founduser){
+      return res.status(404).send('no user found')
+    }
+    founduser.Gender = req.body.Sex,
+    founduser.Bloodgroup= req.body.Bloodgroup,
+    founduser.PhoneNumber= req.body.PhoneNo,
+    founduser.EmergencyNo= req.body.EmergencyNo,
+    founduser.State= req.body.State,
+    founduser.LocalGovernment= req.body.LocalGovt,
+    founduser.LocalGovernment= req.body.picturepath,
+    founduser.LocalGovernment= req.body.imgurli,           
+  
+  await founduser.save();
+  res.redirect('/' + req.params.id)
+
+  } catch (err){
+  res.status(500).send('error occured');
+  }
+  });
 
 app.post("/", upload.single('image'), async(req, res) => {
     try {
