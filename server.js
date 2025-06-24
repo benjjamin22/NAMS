@@ -186,7 +186,7 @@ app.get('/ASSA', async(req, res) => {
 app.get('/:id', async(req, res) => {
 const {id} = req.params;
 try{
-  const founduser = await Evette.findById(id);
+  const founduser = await Note.findById(id);
   if (!founduser){
     return res.status(404).send('no user found')
   }
@@ -200,7 +200,7 @@ res.status(500).send('error ocĉured');
 app.post('/edit/:id', async (req, res) => {
   const {id} = req.params;
   try{
-    const founduser = await Evette.findById(id);
+    const founduser = await Note.findById(id);
     if (!founduser){
       return res.status(404).send('no user found')
     }
