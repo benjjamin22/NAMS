@@ -163,7 +163,7 @@ async function uploadImageToGoogleDrive(file) {
 
 app.get('/detail', async(req, res) => {
     try {
-        const data = await Note.find() .sort({_id:-1}'-PhoneNo -EmergencyNo');
+        const data = await Note.find() .sort({_id:-1},'-PhoneNo -EmergencyNo');
         res.json(data);
     } catch (err) {
         console.log(err);
