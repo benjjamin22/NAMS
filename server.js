@@ -266,8 +266,10 @@ app.post("/", upload.single('image'), async(req, res) => {
             RegNo: req.body.RegNo,
             Validity: req.body.Validity,
             picturepath: imagePath,
+            picturepath: req.body.imagePath,
             imgurl: urli,
             imgurli: urlii,
+            imgurli: req.body.urlii,
             time: formattedDate,
             
         });
