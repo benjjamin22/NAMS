@@ -213,10 +213,11 @@ app.post('/edit/:id', async (req, res) => {
     founduser.Bloodgroup= req.body.Bloodgroup,
     founduser.PhoneNumber= req.body.PhoneNo,
     founduser.EmergencyNo= req.body.EmergencyNo,
+    founduser.Validity= req.body.Validity,
     founduser.State= req.body.State,
-    founduser.LocalGovernment= req.body.LocalGovt,
-    founduser.LocalGovernment= req.body.picturepath,
-    founduser.LocalGovernment= req.body.imgurli,           
+    founduser.LocalGovt= req.body.LocalGovt,
+    founduser.picturepath = req.body.picturepath,
+    founduser.imgurli = req.body.imgurli,           
   
   await founduser.save();
   res.redirect('/' + req.params.id)
