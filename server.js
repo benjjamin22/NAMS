@@ -160,11 +160,15 @@ async function uploadImageToGoogleDrive(file) {
 
     return response.data
 }
+function sanitizeUser(user) {
+  const { PhoneNo, EmergencyNo, ...safe } = user;
+  return safe;
+}
 
 app.get('/detail', async(req, res) => {
     try {
-        const data = await Note.find() .sort({_id:-1});
-        res.json(data);
+          const data = await Note.find().sort({_id:-1});
+          res.json(data);
     } catch (err) {
         console.log(err);
         res.status(500).send("Internal Server Error");
@@ -209,10 +213,11 @@ app.post('/edit/:id', async (req, res) => {
     founduser.Bloodgroup= req.body.Bloodgroup,
     founduser.PhoneNumber= req.body.PhoneNo,
     founduser.EmergencyNo= req.body.EmergencyNo,
+    founduser.Validity= req.body.Validity,
     founduser.State= req.body.State,
-    founduser.LocalGovernment= req.body.LocalGovt,
-    founduser.LocalGovernment= req.body.picturepath,
-    founduser.LocalGovernment= req.body.imgurli,           
+    founduser.LocalGovt= req.body.LocalGovt,
+    founduser.picturepath = req.body.picturepath,
+    founduser.imgurli = req.body.imgurli,           
   
   await founduser.save();
   res.redirect('/' + req.params.id)
@@ -262,8 +267,10 @@ app.post("/", upload.single('image'), async(req, res) => {
             RegNo: req.body.RegNo,
             Validity: req.body.Validity,
             picturepath: imagePath,
+            //picturepath: req.body.imagePath,
             imgurl: urli,
             imgurli: urlii,
+            //imgurli: req.body.urlii,
             time: formattedDate,
             
         });
