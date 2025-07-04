@@ -345,15 +345,15 @@ app.post("/", upload.single('image'), async(req, res) => {
     //res.redirect("/"); <h1 style="font-size:5rem; margin-top:0rem;text-align: center;">${newNote.EmergencyNo}</h1>
 })
 
-    app.listen(PORT, () => {
-        console.log("listening for requests");
-    })
+    //app.listen(PORT, () => {
+       // console.log("listening for requests");
+   // })
 
 
 
 
-//connectDB().then(() => {
-  // app.listen(PORT, () => {
-    //  console.log("listening for requests");
-  //})
-//});
+connectDB().then(() => {
+   app.listen(PORT, () => {
+     console.log("listening for requests");
+  })
+});
