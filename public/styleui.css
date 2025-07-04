@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f9fd;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    justify-content: center;
+    height: 95vh;
+    display: flex;
+    overflow: hidden;
+    margin: 0;
+    font-weight: bolder;
+}
+
+.container {
+    border-radius: 5px;
+    overflow: hidden;
+    width: auto;
+    display: flex;  
+    justify-content: space-between;
+}
+
+
+
+.header {
+    background-color: #3e57db;
+    color: #fff;
+    padding: 0px 20px;
+    width: 50%;
+    height: 5rem;
+    margin: 20px 50px;
+    margin-top: 50px;
+}
+
+.header input {
+    margin-top: 1rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 0;
+    border-radius: px;
+    color: #fff;
+    font-size: 13px;
+    padding: 15px 15px;
+    width: 10rem;
+}
+
+
+.header input:focus {
+    outline: none;
+}
+
+.user-list {
+    background-color: #fff;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    max-height: 490px;
+    overflow-y: auto;
+    display: none;
+}
+
+.user-list li {
+    padding-bottom: 1px;
+    display: flex;
+    padding-top: 10px;
+    margin-left: 25px;
+}
+
+.user-list img {
+    border-radius: 35%;
+    object-fit: cover;
+    height: 50px;
+    width: 45px;
+    padding-left: -5%;
+}
+
+.user-list .user_info h3 {
+    font-size: 15px;
+    margin: 0;
+}
+
+.user-list .user_info {
+    margin-left: 10px;
+    margin-top: -1px;
+    margin-bottom: 5%;
+}
+
+.user-list .user_info p {
+    margin-bottom: -11px;
+    font-size: 12px;
+    margin-top: -5px;
+}
+
+.user-list .user_info p1 {
+    font-size: 11px;
+    margin-top: 10px;
+    color: red;
+    font-weight: bolder;
+}
+
+.user-list li:not(:last-of-type) {
+    border-bottom: 1px solid #eee;
+}
+
+.user-list li.hide {
+    display: none;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="data:;base64,=">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="/styleui.css">
+    
+    <title><%=data.Aname.Name%></title>
+</head>
+<style type="text/css">
+	html, body {
+		font-family: sans-serif;
+	}
+	.controls {
+		margin: 1em 0;
+	}
+	#text {
+		width: 90%;
+	}
+	#output_text {
+		cursor: copy;
+		font-family: monospace;
+		-webkit-font-smoothing: none;
+		font-smooth: never;
+		text-rendering: optimizeSpeed;
+		line-height: 1.1;
+		white-space: nowrap;		
+	}
+	/* Fix for monospace fonts where the space is not the same width as the block characters */
+	#output_text span {
+		display: inline-block;
+		width: 1ch;
+	}
+	#output_img, #output_svg {
+		cursor: copy;	
+	}
+	#output_img img, #output_svg svg {
+		max-width: 50vw;
+	}
+	</style>
+
+<body >
+	 <div class="container">
+            <div class="header" >
+                <input type="number" id="numberinput" placeholder="put number here" />
+                <button class="btn-download" id="btn_convert"  style="width: 80px;height: 30px;margin-top: 25px;font-family: euromode;">Download1
+					<div id="previewImg" style="display: none"></div>
+				</button>
+            </div>
+				 <div style="display: flex;">
+                 	<div id="html-content-holder" style="border-radius: 5px; overflow: hidden; width: 550px;
+                        height: 950px; margin-top: 15px; background-image: url('/public/nambackground.jpg');background-repeat: no-repeat; background-position: center center; 
+                        background-size: 100%;justify-content: center;">
+
+							<div style="list-style-type: none;color:black; margin-top: 52%; justify-content: center;" >
+				 				<img style="border-radius: 8%;object-fit: cover; height: 267px;width: 233px;margin-left:17.5rem;" src="<%=data.imgurli%>">
+                                        <ul> 
+                                            <div style="margin-bottom:22px;margin-left:1rem;display:none;">
+                                                <h1 style="font-size:20px; font-weight: bolder; margin-bottom:0px;margin-top:30px;font-family: arial;"> <%=data.Aname.Name%> </h1>  
+                                                <h1 style="font-size:20px; font-weight: bolder; margin-bottom:0px;margin-top:0px;font-family: arial; width:60px;overflow:hidden;text-overflow:ellipsis;padding:0px 20px;resize:horizontal;"><%=data.Aname.Mname%></h1>
+                                                <h1 style="font-size:20px; font-weight: bolder; margin-bottom:0px;margin-top:0px;font-family: arial;padding:0px 20px;"> <%=data.Aname.Surname%> </h1> 
+                                            </div>
+                                        </ul>
+                                        <h1 style="font-size:26px; font-weight: bolder; margin-bottom:8px;font-family: arial;margin-left:15.4rem;margin-top:8.5rem;"> ><%=data.RegNo%>< </h1>
+                                 <img style="height: 140px;width: 140px;margin-left: 20.3rem;margin-top: 1rem;" id="output_img">
+								 </div>	       
+							</div>
+				  
+					</div>
+			</div>		
+		
+   <script type="module">
+    import QrCode from '/public/qrcode.mjs' ;
+
+	const ecl = 'L+';
+		const qrOptions = {
+			errorCorrectionLevel: QrCode.ErrorCorrectionLevel[ecl[0]],
+			optimizeEcc: ecl.includes('+'),
+		};
+		
+	
+   const matrix = QrCode.generate('https://namsimsu.mydatabase.com.ng/'+numberinput,qrOptions);
+   const uri = QrCode.render('bmp-uri', matrix);
+    document.querySelector('#output_img').src = uri;
+   </script>
+  
+	</script>
+	<script>
+	const middle = document.getElementById('middle');
+    const numberinput = JSON.parse('<%- JSON.stringify(data._id)%>');
+	const mdname = JSON.parse('<%- JSON.stringify(data.Aname.Mname)%>');
+	const mdnamee = mdname.substring(0, 1)+'.'
+	console.log(mdnamee)
+	middle.innerHTML = mdnamee
+	</script>
+   <script>
+
+   let name = JSON.parse('<%- JSON.stringify(data.Aname.Name)%>');
+
+   document.getElementById("btn_convert").addEventListener("click", function () {
+	html2canvas(document.getElementById("html-content-holder"), {
+		allowTaint: true,
+		useCORS: true,
+	}).then (function (canvas) {
+		var link = document.createElement("a");
+		document.body.appendChild(link);
+		document.getElementById("previewImg").appendChild(canvas);
+		link.download = "ISEMB/"+ name +".png";
+		link.href = canvas.toDataURL();
+		link.target = "_blank";
+		link.click();
+	});
+ });
+   </script>
+</body>
+</html>
+

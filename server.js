@@ -16,6 +16,9 @@ const stream = require("stream");
 const { customAlphabet } = require('nanoid');
 const autoIncrement = require("mongoose-sequence")(mongoose);
 
+var accountan = path.join(process.cwd(),'./data.json')
+ var accounts = JSON.parse(fs.readFileSync(accountan,'utf-8'));
+
 
 //function keepServerAwaike() {
 //  http.get('https://mymongoose.onrender.com', (res) => {
@@ -133,7 +136,8 @@ NoteSchemer.plugin(autoIncrement, {inc_field:'id'});
 
 var Note = mongoose.model("Note", NoteSchemer);
 
-app.use('/public', express.static(__dirname + '/public'));
+app.use('/public', express.static(path.join(__dirname + '/public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 const uuidfh = customAlphabet('123456890',5);
 
@@ -175,6 +179,44 @@ app.get('/detail', async(req, res) => {
     }
 });
 
+const serverUrli = 'http://localhost:8080/card/';
+
+app.get('/qrcar/:_id', function (req, res,next) {
+    try{
+        const id = req.params._id;
+       const data = axios.get(serverUrli + id)
+       const founduser = res.json(data)
+        console.log(founduser);
+        if (!founduser ) {
+          return res.status(404).send('no user found')
+    }
+    res.render('qrcard', {data:founduser})
+            } catch (err){
+    res.status(500).send('error ocĉured');
+        }
+  });
+
+  app.get('/getall', function(req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Header", "*");
+    const data = accounts;
+    res.json(data)
+  });
+
+   app.get('/qrcard/:_id', function(req, res, next) {
+     try{
+  const foundUser = accounts.find(x => x._id === req.params._id);
+  console.log(foundUser)
+  //const jsonString = JSON.stringify(foundUser);
+     if (!foundUser ) {
+          return res.status(404).send('no user found')
+    }
+    res.render('qrcard', {data:foundUser})
+            } catch (err){
+    res.status(500).send('error ocĉured');
+        }
+  });
+
 
 app.get('/ASSA', async(req, res) => {
     try {
@@ -189,6 +231,19 @@ app.get('/ASSA', async(req, res) => {
 
 //EDIT
 app.get('/:id', async(req, res) => {
+const {id} = req.params;
+try{
+  const founduser = await Note.findById(id);
+  if (!founduser){
+    return res.status(404).send('no user found')
+  }
+    res.render('result', {data:founduser})
+} catch (err){
+res.status(500).send('error ocĉured');
+}
+});
+
+app.get('/card/:id', async(req, res) => {
 const {id} = req.params;
 try{
   const founduser = await Note.findById(id);
@@ -290,11 +345,15 @@ app.post("/", upload.single('image'), async(req, res) => {
     //res.redirect("/"); <h1 style="font-size:5rem; margin-top:0rem;text-align: center;">${newNote.EmergencyNo}</h1>
 })
 
-
-
-
-connectDB().then(() => {
     app.listen(PORT, () => {
         console.log("listening for requests");
     })
-});
+
+
+
+
+//connectDB().then(() => {
+  // app.listen(PORT, () => {
+    //  console.log("listening for requests");
+  //})
+//});
