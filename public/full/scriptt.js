@@ -19,7 +19,7 @@ async function getData() {
     nuasa.forEach((user) => {
         const div = document.createElement('div')
         listItems.push(div)
-        div.innerHTML = `<a style="text-decoration:none;" onclick="movieselected('${user._id}')"href="#">
+        div.innerHTML = `<a style="text-decoration:none;" onclick="ovieselected('${user._id}')"href="#">
         <div class="movie">
         <img src="${user.imgurli}"style="height:100px; width:90px;">
         <div class="movie-info">
