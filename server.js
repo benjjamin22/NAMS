@@ -19,6 +19,9 @@ const autoIncrement = require("mongoose-sequence")(mongoose);
 var accountan = path.join(process.cwd(),'./data.json')
  var accounts = JSON.parse(fs.readFileSync(accountan,'utf-8'));
 
+ var accountano = path.join(process.cwd(),'./nam.json')
+ var accountso = JSON.parse(fs.readFileSync(accountano,'utf-8'));
+
 
 //function keepServerAwaike() {
 //  http.get('https://mymongoose.onrender.com', (res) => {
@@ -179,6 +182,10 @@ app.get('/detail', async(req, res) => {
     }
 });
 
+//User.find({}, '-password -token') // Exclude password and token
+  //.then(users => res.json(users));
+
+
 const serverUrli = 'http://localhost:8080/card/';
 
 app.get('/qrcar/:_id', function (req, res,next) {
@@ -200,6 +207,13 @@ app.get('/qrcar/:_id', function (req, res,next) {
    res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Header", "*");
     const data = accounts;
+    res.json(data)
+  });
+
+   app.get('/fulllist', function(req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Header", "*");
+    const data = accountso;
     res.json(data)
   });
 
@@ -346,14 +360,14 @@ app.post("/", upload.single('image'), async(req, res) => {
 })
 
     //app.listen(PORT, () => {
-       // console.log("listening for requests");
-   // })
+        //console.log("listening for requests");
+   //})
 
 
 
 
 connectDB().then(() => {
    app.listen(PORT, () => {
-     console.log("listening for requests");
+    console.log("listening for requests");
   })
 });

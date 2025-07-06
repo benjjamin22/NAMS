@@ -19,7 +19,7 @@ body {
 .user-profile {
     margin-top: 0rem;
     background-color: #dcdcdc;
-    width: 25.5rem;
+    width: auto;
     max-width: 30rem;
     border-radius: .5rem;
     overflow: hidden;
