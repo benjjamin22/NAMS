@@ -91,5 +91,39 @@ app.listen(3000, () => console.log('Server running on http://localhost:3000'));
 //<% }) %>
 
 
+// === FILE: generatePins.js ===
+const mongoose = require('mongoose');
+const User = require('./models/User');
+const { customAlphabet } = require('nanoid');
+
+const nanoid = customAlphabet('1234567890', 4); // 4-digit numeric PIN
+
+mongoose.connect('mongodb://localhost:27017/pinLogin');
+
+mongoose.set('strictQuery', false);
+const connectDB = async() => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URI);
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+        console.log(error);
+        process.exit(1);
+    }
+}
+
+async function generatePins() {
+  const pins = new Set();
+  while (pins.size < 200) {
+    pins.add(nanoid());
+  }
+  const pinArray = Array.from(pins).map(pin => ({ pin }));
+  await User.insertMany(pinArray);
+  console.log('200 PINs generated and saved.');
+  mongoose.disconnect();
+}
+
+generatePins();
+
+
 
 
