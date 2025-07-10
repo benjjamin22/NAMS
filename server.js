@@ -231,6 +231,20 @@ app.get('/qrcar/:_id', function (req, res,next) {
         }
   });
 
+//EDIT
+app.get('/qrcardo/:id', async(req, res) => {
+const {id} = req.params;
+try{
+  const founduser = await Note.findById(id);
+  if (!founduser){
+    return res.status(404).send('no user found')
+  }
+    res.render('qrcard', {data:founduser})
+} catch (err){
+res.status(500).send('error ocĉured');
+}
+});
+
 
 app.get('/ASSA', async(req, res) => {
     try {
