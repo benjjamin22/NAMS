@@ -337,7 +337,7 @@ app.post('/edititt/:_id', async (req, res) => {
   });
 
   //EDIT
-app.get('/gt/:_id', async(req, res) => {
+app.get('/gt/:id', async(req, res) => {
 const {id} = req.params;
 try{
   const founduser = await Note.findById(id);
