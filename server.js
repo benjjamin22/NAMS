@@ -362,10 +362,10 @@ app.get('/new', (req, res) => {
   });
      
 //UPDATE ROUT
-app.post('/editit/:_id', async(req, res) => {
-const {_id} = req.params;
+app.post('/editit/:id', async(req, res) => {
+const {id} = req.params;
 try{
-  const founduser = await Note.findById(_id);
+  const founduser = await Note.findById(id);
   if (!founduser){
     return res.status(404).send('no user found')
   }
