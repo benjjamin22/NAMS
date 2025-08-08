@@ -362,13 +362,13 @@ app.get('/new', (req, res) => {
   });
      
 //UPDATE ROUT
-app.post('/editit/:id', async (req, res) => {
-  const {id} = req.params;
-  try{
-    const founduser = await Note.findById(id);
-    if (!founduser){
-      return res.status(404).send('no user found')
-    }
+app.post('/editit/:id', async(req, res) => {
+const {id} = req.params;
+try{
+  const founduser = await Note.findById(id);
+  if (!founduser){
+    return res.status(404).send('no user found')
+  }
     founduser.Aname.Name = req.body.Name,
     founduser.Aname.Mname = req.body.Mname,
     founduser.Aname.Surname = req.body.Surname,
