@@ -297,7 +297,7 @@ res.status(500).send('error ocĉured');
         }
   });
 
-app.get('/card/:_id', async(req, res) => {
+app.get('/card/:id', async(req, res) => {
 const {id} = req.params;
 try{
   const founduser = await Note.findById(id);
@@ -311,8 +311,8 @@ res.status(500).send('error ocĉured');
 });
 
 //UPDATE ROUT
-app.post('/edititt/:id', async (req, res) => {
-  const {id} = req.params;
+app.post('/edititt/:_id', async (req, res) => {
+  const {id} = req.params._id;
   try{
     const founduser = await Note.findById(id);
     if (!founduser){
@@ -337,7 +337,7 @@ app.post('/edititt/:id', async (req, res) => {
   });
 
   //EDIT
-app.get('/gt/:id', async(req, res) => {
+app.get('/gt/:_id', async(req, res) => {
 const {id} = req.params;
 try{
   const founduser = await Note.findById(id);
@@ -362,8 +362,8 @@ app.get('/new', (req, res) => {
   });
      
 //UPDATE ROUT
-app.post('/editit/:id', async(req, res) => {
-const {id} = req.params;
+app.post('/editit/:_id', async(req, res) => {
+const id = req.params_id;
 try{
   const founduser = await Note.findById(id);
   if (!founduser){
