@@ -362,8 +362,8 @@ app.get('/new', (req, res) => {
   });
      
 //UPDATE ROUT
-app.post('/editit/:_id', async(req, res) => {
-const id = req.params_id;
+app.post('/editit/:id', async(req, res) => {
+const {id} = req.params;
 try{
   const founduser = await Note.findById(id);
   if (!founduser){
