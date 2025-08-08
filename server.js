@@ -311,14 +311,14 @@ res.status(500).send('error ocĉured');
 });
 
 //UPDATE ROUT
-app.get('/edititt/:id', async (req, res) => {
+app.post('/edititt/:id', async (req, res) => {
   const {id} = req.params;
   try{
     const founduser = await Note.findById(id);
     if (!founduser){
       return res.status(404).send('no user found')
     }
-    founduser.Gender = req.body.Sex,
+    founduser.Sexr = req.body.Sex,
     founduser.Bloodgroup= req.body.Bloodgroup,
     founduser.PhoneNumber= req.body.PhoneNo,
     founduser.EmergencyNo= req.body.EmergencyNo,
