@@ -362,7 +362,7 @@ app.get('/new', (req, res) => {
   });
      
 //UPDATE ROUT
-app.post('/edit/:id', async (req, res) => {
+app.post('/editit/:id', async (req, res) => {
   const {id} = req.params;
   try{
     const founduser = await Note.findById(id);
