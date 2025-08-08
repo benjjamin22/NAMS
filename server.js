@@ -311,7 +311,7 @@ res.status(500).send('error ocĉured');
 });
 
 //UPDATE ROUT
-app.post('/edititt/:id', async (req, res) => {
+app.get('/edititt/:id', async (req, res) => {
   const {id} = req.params;
   try{
     const founduser = await Note.findById(id);
