@@ -297,7 +297,7 @@ res.status(500).send('error ocĉured');
         }
   });
 
-app.get('/card/:id', async(req, res) => {
+app.get('/card/:_id', async(req, res) => {
 const {id} = req.params;
 try{
   const founduser = await Note.findById(id);
@@ -362,23 +362,23 @@ app.get('/new', (req, res) => {
   });
      
 //UPDATE ROUT
-app.post('/edit/:id', async (req, res) => {
+app.post('/edit/:_id', async (req, res) => {
   const {id} = req.params;
   try{
-    const founduser = await  Note.findById(id);
+    const founduser = await Note.findById(id);
     if (!founduser){
       return res.status(404).send('no user found')
     }
-    founduser.Gender = req.body.Name,
-    founduser.Gender = req.body.Mname,
-    founduser.Gender = req.body.Surname,
-    founduser.Gender = req.body.RegNo,
+    founduser.Aname.Name = req.body.Name,
+    founduser.Aname.Mname = req.body.Mname,
+    founduser.Aname.Surname = req.body.Surname,
+    founduser.RegNo = req.body.RegNo,
     founduser.Sex = req.body.Gender,
     founduser.Bloodgroup= req.body.Bloodgroup,
-    founduser.PhoneNo= req.body.PhoneNo,
+    founduser.PhoneNo= req.body.PhoneNumber,
     founduser.EmergencyNo= req.body.EmergencyNo,
     founduser.State= req.body.State,
-    founduser.LocalGovernment= req.body.LocalGovt,          
+    founduser.LocalGovt= req.body.LocalGovernment,          
   
   await founduser.save();
   res.redirect('/' + req.params.id)
