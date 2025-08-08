@@ -22,6 +22,9 @@ var accountan = path.join(process.cwd(),'./data.json')
  var accountano = path.join(process.cwd(),'./nam.json')
  var accountso = JSON.parse(fs.readFileSync(accountano,'utf-8'));
 
+ var accountanop = path.join(process.cwd(),'./tyi.json')
+ var accountsoio = JSON.parse(fs.readFileSync(accountanop,'utf-8'));
+
 
 //function keepServerAwaike() {
 //  http.get('https://mymongoose.onrender.com', (res) => {
@@ -73,7 +76,7 @@ const drive = google.drive({ version: 'v3', auth: oauth2Client });
 //Schedule the task to run every 5 minutes
 cron.schedule('*/14 * * * *', () => {
     console.log('Sending keep-alive request to server...');
-    keepAlive();
+    keepAlive;
 });
 
 console.log('Keep-alive script started.');
@@ -210,6 +213,13 @@ app.get('/qrcar/:_id', function (req, res,next) {
     res.json(data)
   });
 
+    app.get('/getlit', function(req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Header", "*");
+    const data = accountsoio;
+    res.json(data)
+  });
+
    app.get('/fulllist', function(req, res, next) {
    res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Header", "*");
@@ -219,7 +229,7 @@ app.get('/qrcar/:_id', function (req, res,next) {
 
    app.get('/qrcard/:_id', function(req, res, next) {
      try{
-  const foundUser = accounts.find(x => x._id === req.params._id);
+  const foundUser = accountsoio.find(x => x._id === req.params._id);
   console.log(foundUser)
   //const jsonString = JSON.stringify(foundUser);
      if (!foundUser ) {
@@ -258,10 +268,12 @@ app.get('/ASSA', async(req, res) => {
 });
 
 //EDIT
-app.get('/:id', async(req, res) => {
-const {id} = req.params;
+app.get('/poli/:_id', async(req, res) => {
+  //const founduser = accountsoio.find(x => x._id === req.params._id);
+//const {id} = req.params;
 try{
-  const founduser = await Note.findById(id);
+  const founduser = accountsoio.find(x => x._id === req.params._id);
+  //const founduser = await Note.findById(id);
   if (!founduser){
     return res.status(404).send('no user found')
   }
@@ -270,6 +282,20 @@ try{
 res.status(500).send('error ocĉured');
 }
 });
+
+   app.get('/:oooo_id', function(req, res, next) {
+     try{
+  const foundUser = accountsoio.find(x => x._id === req.params._id);
+  console.log(foundUser)
+  //const jsonString = JSON.stringify(foundUser);
+     if (!foundUser ) {
+          return res.status(404).send('no user found')
+    }
+    res.render('result', {data:foundUser})
+            } catch (err){
+    res.status(500).send('error ocĉured');
+        }
+  });
 
 app.get('/card/:id', async(req, res) => {
 const {id} = req.params;
@@ -285,7 +311,7 @@ res.status(500).send('error ocĉured');
 });
 
 //UPDATE ROUT
-app.post('/edit/:id', async (req, res) => {
+app.post('/edititt/:id', async (req, res) => {
   const {id} = req.params;
   try{
     const founduser = await Note.findById(id);
@@ -301,6 +327,58 @@ app.post('/edit/:id', async (req, res) => {
     founduser.LocalGovt= req.body.LocalGovt,
     founduser.picturepath = req.body.picturepath,
     founduser.imgurli = req.body.imgurli,           
+  
+  await founduser.save();
+  res.redirect('/' + req.params.id)
+
+  } catch (err){
+  res.status(500).send('error occured');
+  }
+  });
+
+  //EDIT
+app.get('/gt/:id', async(req, res) => {
+const {id} = req.params;
+try{
+  const founduser = await Note.findById(id);
+  if (!founduser){
+    return res.status(404).send('no user found')
+  }
+    res.render('edit', {data:founduser})
+} catch (err){
+res.status(500).send('error ocĉured');
+}
+});
+
+//new
+app.get('/new', (req, res) => {
+
+  try{
+    
+      res.render('user')
+  } catch (err){
+  res.status(500).send('error ocĉured');
+  }
+  });
+     
+//UPDATE ROUT
+app.post('/edit/:id', async (req, res) => {
+  const {id} = req.params;
+  try{
+    const founduser = await  Note.findById(id);
+    if (!founduser){
+      return res.status(404).send('no user found')
+    }
+    founduser.Gender = req.body.Name,
+    founduser.Gender = req.body.Mname,
+    founduser.Gender = req.body.Surname,
+    founduser.Gender = req.body.RegNo,
+    founduser.Sex = req.body.Gender,
+    founduser.Bloodgroup= req.body.Bloodgroup,
+    founduser.PhoneNo= req.body.PhoneNo,
+    founduser.EmergencyNo= req.body.EmergencyNo,
+    founduser.State= req.body.State,
+    founduser.LocalGovernment= req.body.LocalGovt,          
   
   await founduser.save();
   res.redirect('/' + req.params.id)

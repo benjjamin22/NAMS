@@ -23,7 +23,7 @@ async function getData() {
         <div class="movie">
         <img src="${user.imgurli}"style="height:100px; width:90px;">
         <div class="movie-info">
-      <h3>${user.Aname.Name} ${user.Aname.Mname} ${user.Aname.Surname}</h3>
+      <h3>${user.Aname.Name} ${user.Aname.Mname} ${user.Aname.Surname} ${user.RegNo}</h3>
         </div></div> </a>
         `
         main.appendChild(div)
